@@ -1,0 +1,468 @@
+\documentclass{article}
+
+\usepackage[english, russian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[14pt]{extsizes}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{tocloft}
+\usepackage{indentfirst} 
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{svg}
+
+\captionsetup[figure]{name={Рисунок},labelsep=endash}
+\captionsetup[table]{singlelinecheck=false, labelsep=endash}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\geometry{pdftex, left = 3cm, right = 1cm	, top = 2cm, bottom = 2cm}
+\onehalfspacing
+
+\setlength{\parindent}{1,25cm}
+\lstdefinestyle{lang}{
+	basicstyle=\footnotesize\ttfamily,
+	frame=single,
+	tabsize=4,	
+	breaklines=true
+}
+
+\lstset{
+	literate=
+	{а}{{\selectfont\char224}}1
+	{б}{{\selectfont\char225}}1
+	{в}{{\selectfont\char226}}1
+	{г}{{\selectfont\char227}}1
+	{д}{{\selectfont\char228}}1
+	{е}{{\selectfont\char229}}1
+	{ё}{{\"e}}1
+	{ж}{{\selectfont\char230}}1
+	{з}{{\selectfont\char231}}1
+	{и}{{\selectfont\char232}}1
+	{й}{{\selectfont\char233}}1
+	{к}{{\selectfont\char234}}1
+	{л}{{\selectfont\char235}}1
+	{м}{{\selectfont\char236}}1
+	{н}{{\selectfont\char237}}1
+	{о}{{\selectfont\char238}}1
+	{п}{{\selectfont\char239}}1
+	{р}{{\selectfont\char240}}1
+	{с}{{\selectfont\char241}}1
+	{т}{{\selectfont\char242}}1
+	{у}{{\selectfont\char243}}1
+	{ф}{{\selectfont\char244}}1
+	{х}{{\selectfont\char245}}1
+	{ц}{{\selectfont\char246}}1
+	{ч}{{\selectfont\char247}}1
+	{ш}{{\selectfont\char248}}1
+	{щ}{{\selectfont\char249}}1
+	{ъ}{{\selectfont\char250}}1
+	{ы}{{\selectfont\char251}}1
+	{ь}{{\selectfont\char252}}1
+	{э}{{\selectfont\char253}}1
+	{ю}{{\selectfont\char254}}1
+	{я}{{\selectfont\char255}}1
+	{А}{{\selectfont\char192}}1
+	{Б}{{\selectfont\char193}}1
+	{В}{{\selectfont\char194}}1
+	{Г}{{\selectfont\char195}}1
+	{Д}{{\selectfont\char196}}1
+	{Е}{{\selectfont\char197}}1
+	{Ё}{{\"E}}1
+	{Ж}{{\selectfont\char198}}1
+	{З}{{\selectfont\char199}}1
+	{И}{{\selectfont\char200}}1
+	{Й}{{\selectfont\char201}}1
+	{К}{{\selectfont\char202}}1
+	{Л}{{\selectfont\char203}}1
+	{М}{{\selectfont\char204}}1
+	{Н}{{\selectfont\char205}}1
+	{О}{{\selectfont\char206}}1
+	{П}{{\selectfont\char207}}1
+	{Р}{{\selectfont\char208}}1
+	{С}{{\selectfont\char209}}1
+	{Т}{{\selectfont\char210}}1
+	{У}{{\selectfont\char211}}1
+	{Ф}{{\selectfont\char212}}1
+	{Х}{{\selectfont\char213}}1
+	{Ц}{{\selectfont\char214}}1
+	{Ч}{{\selectfont\char215}}1
+	{Ш}{{\selectfont\char216}}1
+	{Щ}{{\selectfont\char217}}1
+	{Ъ}{{\selectfont\char218}}1
+	{Ы}{{\selectfont\char219}}1
+	{Ь}{{\selectfont\char220}}1
+	{Э}{{\selectfont\char221}}1
+	{Ю}{{\selectfont\char222}}1
+	{Я}{{\selectfont\char223}}1
+}
+
+\DeclareCaptionLabelSeparator{line}{\ --\ }
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43,0.35,0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{
+	singlelinecheck=false,
+	labelsep=line
+}
+
+\begin{document}
+\begin{titlepage}
+	\newgeometry{pdftex, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
+	\fontsize{12pt}{12pt}\selectfont
+	\noindent\begin{tabular}{|c|c|}	\hline
+	\noindent\begin{minipage}{0.15\textwidth}
+		\includegraphics[width=\linewidth]{tools/logo.png}
+	\end{minipage} &
+	\noindent\begin{minipage}{0.85\textwidth}\centering
+		\textbf{\newline Министерство науки и высшего образования Российской Федерации}\\
+		\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+		\textbf{«Московский государственный технический университет имени Н.Э.~Баумана}\\
+		\textbf{(национальный исследовательский университет)»}\\
+		\textbf{(МГТУ им. Н.Э.~Баумана)}
+	\end{minipage} \\
+	\hline	\end{tabular}\newline\newline\newline
+	\noindent ФАКУЛЬТЕТ \underline{«Информатика и системы управления»} \newline\newline
+	\noindent КАФЕДРА \underline{«Программное обеспечение ЭВМ и информационные технологии»}\newline\newline\newline\newline\newline\newline
+
+	\noindent\begin{minipage}{1.0\textwidth}\centering
+		\Large\textbf{       Практикум №1}
+		\end{minipage}
+		
+	\noindent\begin{minipage}{1.0\textwidth}\centering
+		\textbf{\newline}	
+		\end{minipage}
+
+	\noindent\begin{minipage}{1.0\textwidth}\centering
+		\Large\textbf{по дисциплине «Архитектура ЭВМ»}	
+		\end{minipage}
+		
+	\noindent\begin{minipage}{1.0\textwidth}\centering
+		\Large\textbf{\newline\newline\newline\newline}	
+		\end{minipage}
+	
+	\noindent\textbf{Тема} \underline{Разработка и отладка программ в вычислительном комплексе Тераграф}
+\newline\newline
+	\textbf{Студент} \underline{Пантелеев Василий Максимович}\newline\newline
+	\textbf{Группа} \underline{ИУ7-52Б}\newline\newline
+	\textbf{Преподаватель} \underline{Калитвенцев Максим Павлович}
+	
+	\begin{center}
+		\vfill
+		Москва, \the\year ~г.
+	\end{center}
+	\restoregeometry
+	\clearpage
+\end{titlepage}
+
+\section{Введение}
+
+Практикум посвящен освоению принципов работы вычислительного комплекса Тераграф и получению практических навыков 
+решения задач обработки множеств на основе гетерогенной вычислительной структуры. В ходе практикума необходимо 
+ознакомиться с типовой структурой двух взаимодействующих программ: хост-подсистемы и программного ядра $sw$ $kernel$.
+Для выполнения практикума предоставляется доступ к облачной платформе $devlab.bmstu.ru$ с установленными 
+ускорительными картами микропроцессора Леонард Эйлер и настроенными средствами сборки проектов.
+
+\clearpage\section{Индивидуальное задание}
+
+Сформировать в хост-подсистеме и передать в SPE две коллекции. Описание коллекций:
+
+\begin{itemize}
+	\item[---] $students: student_id, name$.
+	\item[---] $volunteer_hours: record_id, student_id, hours, date$.
+\end{itemize}
+
+Все текстовые поля коллекций предварительно индексируются и сохраняются в $std::map$ в хост-подсистеме (например, путем 
+автоинкремента индекса). В SPE передаются только индексы.
+
+Подсчитать общее количество волонтёрских часов, набранных студентом Дмитрий Егоров
+(передается в запросе из хост-подсистемы) за 2023 год
+(передается в запросе из хост-подсистемы)? Результат передать в хост систему и выдать на экран.
+
+Эквивалентный запрос на языке $AQL$:
+
+\begin{lstlisting}[style=lang, caption=Запрос на языке AQL]
+LET targetYear = 2023
+FOR student IN students
+	FILTER student.name == "Дмитрий Егоров"
+	LET totalHours = SUM(
+		FOR record IN volunteer_hours
+		FILTER record.student_id == student.student_id
+		AND DATE_YEAR(record.date) == targetYear
+		RETURN record.hours
+)
+\end{lstlisting}
+
+\textbf{Объяснение:}
+
+\begin{enumerate}
+	\item Устанавливаем целевой год: LET targetYear = 2023.
+	\item Находим студента: FILTER student.name == “Дмитрий Егоров”.
+	\item Суммируем волонтёрские часы за указанный год:
+	\begin{itemize}
+		\item[---] Итерируем по записям volunteer hours.
+		\item[---] Фильтруем по student id и году (DATE YEAR(record.date) == targetYear).
+		\item[---] Используем SUM для вычисления общей суммы часов.
+	\end{itemize}
+	\item Возвращаем результат: RETURN { “name”: …, “total\_volunteer\_hours”: … }.
+\end{enumerate}
+
+
+\clearpage\section{Описание структур}
+
+В листинге~\ref{structs} приведены описания структур: структуры студента и волонтерских записей. Поля структуры соответствуют
+заданию. 
+
+\begin{lstlisting}[style=lang, label=structs, caption=Описание  структур]
+struct students {
+    using vertex_t = uint32_t;
+    int struct_number;
+    constexpr students(int struct_number) : struct_number(struct_number) {}
+
+    STRUCT(key) {
+        uint32_t student_id : 32; // Поле 0: уникальный идентификатор студента
+    };
+
+    STRUCT(val) {
+        uint32_t name_idx : 32;       // Поле 0: индекс имени в std::map
+    };
+
+#ifdef __riscv64__
+    DEFINE_DEFAULT_KEYVAL(key, val)
+#endif
+};
+
+struct volunteer_hours {
+    using vertex_t = uint32_t;
+    int struct_number;
+    constexpr volunteer_hours(int struct_number) : struct_number(struct_number) {}
+
+    STRUCT(key) {
+        uint32_t record_id : 32; // Поле 0: уникальный идентификатор записи
+    };
+
+    STRUCT(val) {
+        uint32_t student_id : 16;  // Поле 0: идентификатор студента
+        uint32_t hours      : 16;  // Поле 1: количество часов
+        uint32_t date_idx   : 32;  // Поле 2: индекс даты
+    };
+
+#ifdef __riscv64__
+    DEFINE_DEFAULT_KEYVAL(key, val)
+#endif
+};
+\end{lstlisting}
+
+\clearpage\section{Описание хост-подсистемы}
+
+В листинге~\ref{host} приведено описание хост-подсистемы, которая инициализирует $map$ студентов, занимает ядро и 
+инициализирует поток сообщений программному ядру с информацией о студентах и волонтерских часах. Затем формируется
+запрос от хост-подсистемы к ядру и по результатам этого запроса печатается ответ.
+
+\begin{lstlisting}[style=lang, label=host, caption=Описание хост-подсистемы]
+std::vector<std::string> name_index = {
+        "",
+        "Дмитрий Егоров",
+        "Александр Осипов",
+        "Андрей Раскольников",
+        "Сергей Ваничуч",
+        "Александр Кострицкий"
+};
+
+uint32_t get_name_index(const std::string& name) {
+    for (int i = 0; i < name_index.size(); i++) {
+        if (name == name_index[i])
+            return i;
+    }
+    return -1;
+}
+
+// Отправка данных студентов в SPE
+void send_students(gpc* gpc64_inst) {
+    gpc64_inst->start(__event__(update_students));
+    for (uint32_t student_id = 1; student_id < name_index.size(); ++student_id) {
+        std::string name = name_index[student_id];
+        gpc64_inst->mq_send(students::key{.student_id = student_id});
+        gpc64_inst->mq_send(students::val{.name_idx = get_name_index(name)});
+        uint32_t ack = gpc64_inst->mq_receive();
+        if (ack != 1) {
+            std::cerr << "Ошибка отправки данных студента: student_id=" << student_id << std::endl;
+        }
+    }
+    gpc64_inst->mq_send(students::key{.student_id = 0});
+}
+
+// Отправка данных волонтерских часов в SPE
+void send_volunteer_hours(gpc* gpc64_inst) {
+    gpc64_inst->start(__event__(update_volunteer_hours));
+    std::vector<std::tuple<uint32_t, uint32_t, uint32_t>> volunteer_data = {
+        {1, 5, 20230101},
+        {1, 3, 20230215},
+        {2, 4, 20230310},
+        {1, 7, 20231120},
+        {3, 5, 20231120}
+    };
+
+    for (uint32_t record_id = 0; record_id < volunteer_data.size(); ++record_id) {
+        auto [student_id, hours, date] = volunteer_data[record_id];
+        gpc64_inst->mq_send(volunteer_hours::key{.record_id = record_id + 1});
+        gpc64_inst->mq_send(volunteer_hours::val{
+            .student_id = student_id,
+            .hours = hours,
+            .date_idx = date
+        });
+
+        uint32_t ack = gpc64_inst->mq_receive();
+        if (ack != 1) {
+            std::cerr << "Ошибка отправки данных студента: student_id=" << student_id << std::endl;
+        }
+        // std::cout << "Отправлен волонтерский час: record_id=" << record_id + 1
+                //   << ", student_id=" << student_id
+                //   << ", hours=" << hours
+                //   << ", date=" << date << std::endl;
+    }
+    gpc64_inst->mq_send(volunteer_hours::key{.record_id = 0}); // Завершение отправки
+}
+
+// Запрос волонтерских часов для студента
+void query_volunteer_hours(gpc* gpc64_inst, const std::string& name, uint32_t year) {
+    uint32_t name_idx = get_name_index(name);
+    if (name_idx == -1) {
+        std::cerr << "Студент не найден: " << name << std::endl;
+        return;
+    }
+
+    gpc64_inst->start(__event__(select_volunteer_hours));
+    gpc64_inst->mq_send(students::key{.student_id = name_idx});
+    std::cout << "Поиск студента " << name_idx << std::endl;
+    gpc64_inst->mq_send(year);
+    std::cout << "Год " << year << std::endl;
+
+    uint32_t total_hours = 0;
+
+    while (1) {
+        uint32_t result = gpc64_inst->mq_receive();
+        if (result == 0) break; // Конец передачи результатов
+
+        total_hours = result; // Обновление общего количества часов
+    }
+
+    std::cout << "Общее количество волонтерских часов для студента " << name
+              << " за " << year << " год: " << total_hours << std::endl;
+}
+
+int main(int argc, char** argv) {
+    ofstream log("lab2.log");
+    gpc* gpc64_inst = new gpc("/dev/gpc21"); // Создание экземпляра gpc
+    log << "Открывается доступ к " << gpc64_inst->gpc_dev_path << endl;
+
+    if (gpc64_inst->load_swk(argv[1]) == 0) {
+        log << "Программное ядро загружено из файла " << argv[1] << endl;
+    } else {
+        log << "Ошибка загрузки sw_kernel файла " << argv[1] << endl;
+        return -1;
+    }
+
+    send_students(gpc64_inst);
+    send_volunteer_hours(gpc64_inst);
+
+    std::string student_name = "Александр Осипов";
+
+    std::cout << "Введите год: ";
+    uint32_t year = 0;
+    std::cin >> year;
+
+    query_volunteer_hours(gpc64_inst, student_name, year);
+
+    delete gpc64_inst;
+    return 0;
+}
+\end{lstlisting}
+
+\clearpage\section{Описание кода обработчика, функционирующего в ядре}
+
+В листинге~\ref{kernel} приведено описание обработчика событий от хост-подсистемы. Обработчик функционирует на базе
+ядра $sw\_kernel$. При получении событий на обновление информации о студентах и волонтерских часах, вызываются функции
+$update\_students$ и $update\_volunteer\_hours$, которые обновляют информацию о студентах и волонтерских часах. Функция
+$select\_volunteer\_hours$ выполняет поиск волонтерских часов для переданного в качестве параметра идентификатора студента
+и соответствующих переданному в качестве параметра году. Далее часы суммируются и в случае успеха
+возвращается суммарное число часов.
+
+\begin{lstlisting}[style=lang, label=kernel, caption=Описание кода обработчика]
+int main(void) {
+    /////////////////////////////////////////////////////////
+    //                  Main Event Loop
+    /////////////////////////////////////////////////////////
+    //Leonhard driver structure should be initialised
+    lnh_init();
+    for (;;) {
+        //Wait for event
+        event_source = wait_event();
+        switch(event_source) {
+            /////////////////////////////////////////////
+            //  Measure GPN operation frequency
+            /////////////////////////////////////////////
+            case __event__(update_students) : update_students(); break;
+            case __event__(update_volunteer_hours) : update_volunteer_hours(); break;
+            case __event__(select_volunteer_hours) : select_volunteer_hours(); break;
+        }
+        set_gpc_state(READY);
+    }
+}
+
+void update_students() {
+    while (1) {
+        students::key key = students::key::from_int(mq_receive());
+        if (key == 0) break;
+        students::val val = students::val::from_int(mq_receive());
+        STUDENTS.ins_async(key, val);
+        mq_send(1);
+    }
+}
+
+void update_volunteer_hours() {
+    while (1) {
+        volunteer_hours::key key = volunteer_hours::key::from_int(mq_receive());
+        if (key == 0) break;
+        volunteer_hours::val val = volunteer_hours::val::from_int(mq_receive());
+        VOLUNTEER_HOURS.ins_async(key, val);
+        mq_send(1);
+    }
+}
+
+void select_volunteer_hours() {
+    uint32_t target_student_id = mq_receive();
+    uint32_t target_year = mq_receive();
+
+    uint32_t total_hours = 0;
+
+    auto val = VOLUNTEER_HOURS.nsm(volunteer_hours::key{.record_id = 2});
+
+    for (int i = 1; i < 10; i++) {
+        if (val.value().student_id == target_student_id) {
+            uint32_t year = val.value().date_idx / 10000;
+            if (year == target_year) {
+                total_hours += val.value().hours;
+            }
+        }
+
+        val = VOLUNTEER_HOURS.next(val.key());
+    }
+
+    mq_send(total_hours);
+    mq_send(0);
+}
+
+\end{lstlisting}
+
+\clearpage\section{Вывод}
+
+В ходе работы была разработана хост-подсистема, а так же обработчик программного ядра, выполняющие индивидуальное 
+задание. Программа была протестирована --- все тесты пройдены успешно.
+
+\end{document}
